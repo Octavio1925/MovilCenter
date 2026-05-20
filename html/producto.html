@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Producto</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+<header class="header">
+<a href="../index.html" class="back">← Volver</a>
+  <h1>MovilCenter</h1>
+
+  <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/html/carrito.html">Carrito</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <div class="producto" id="producto">
+    <!-- contenido dinámico -->
+  </div>
+
+</main>
+
+<script src="/js/carrito.js"></script>
+
+<script>
+const productos = {
+  iphone13: {
+    nombre: "iPhone 13",
+    precio: 25000,
+    img: "/img/iphone13.jpg",
+    desc: "El iPhone 13 combina potencia, diseño premium y excelente cámara. Ideal para fotografía, redes sociales y rendimiento diario.",
+    specs: [
+      "Pantalla Super Retina XDR de 6.1 pulgadas",
+      "Chip A15 Bionic",
+      "Cámara dual de 12 MP",
+      "Batería hasta 19 horas de video",
+      "Face ID y resistencia al agua"
+    ]
+  },
+
+  samsungS22: {
+    nombre: "Samsung Galaxy S22",
+    precio: 20000,
+    img: "/img/samsungS22.jpg",
+    desc: "Un gama alta compacto con potencia brutal y cámara profesional.",
+    specs: [
+      "Pantalla Dynamic AMOLED 2X 120Hz",
+      "Procesador Snapdragon 8 Gen 1",
+      "Triple cámara profesional",
+      "Carga rápida 25W",
+      "Modo noche avanzado"
+    ]
+  },
+
+  xiaomi12: {
+    nombre: "Xiaomi 12",
+    precio: 15000,
+    img: "/img/xiaomi12.jpg",
+    desc: "Rendimiento potente a precio accesible.",
+    specs: [
+      "Snapdragon 8 Gen 1",
+      "Pantalla AMOLED 120Hz",
+      "Carga rápida 67W",
+      "Cámara principal 50 MP",
+      "Diseño compacto"
+    ]
+  },
+
+  iphone14: {
+    nombre: "iPhone 14",
+    precio: 28000,
+    img: "/img/iphone14.jpg",
+    desc: "Mejoras en cámara y rendimiento con diseño refinado.",
+    specs: [
+      "Chip A15 mejorado",
+      "Cámara con Photonic Engine",
+      "Detección de choques",
+      "Pantalla OLED 6.1”",
+      "Batería optimizada"
+    ]
+  },
+
+  samsungA53: {
+    nombre: "Samsung A53",
+    precio: 12000,
+    img: "/img/samsungA53.jpg",
+    desc: "Gama media potente con excelente batería.",
+    specs: [
+      "Pantalla Super AMOLED 120Hz",
+      "Exynos 1280",
+      "Cámara cuádruple",
+      "Batería 5000 mAh",
+      "Resistente al agua IP67"
+    ]
+  },
+
+  redmiNote11: {
+    nombre: "Redmi Note 11",
+    precio: 9000,
+    img: "/img/redmiNote11.jpg",
+    desc: "Económico pero muy funcional para el día a día.",
+    specs: [
+      "Pantalla AMOLED 90Hz",
+      "Snapdragon 680",
+      "Batería 5000 mAh",
+      "Carga rápida 33W",
+      "Cámara 50 MP"
+    ]
+  }
+};
+
+// leer URL
+function getQuery() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("producto");
+}
+
+const id = getQuery();
+const p = productos[id];
+
+const cont = document.getElementById("producto");
+
+if (p) {
+  cont.innerHTML = `
+    <img src="${p.img}" alt="${p.nombre}">
+
+    <div>
+      <h2>${p.nombre}</h2>
+
+      <p>${p.desc}</p>
+
+      <ul>
+        ${p.specs.map(s => `<li>${s}</li>`).join("")}
+      </ul>
+
+      <p class="precio">C$${p.precio}</p>
+
+      <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})">
+        Agregar al carrito
+      </button>
+    </div>
+  `;
+} else {
+  cont.innerHTML = "<h2>Producto no encontrado</h2>";
+}
+</script>
+
+</body>
+</html>

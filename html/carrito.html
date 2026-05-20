@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <h1>MovilCenter</h1>
+  <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/html/carrito.html">Carrito</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <h2>Carrito</h2>
+
+  <div id="carrito-lista"></div>
+
+  <div class="carrito-total">
+    <h3 id="total">Total: C$0</h3>
+    <button onclick="comprar()">Comprar</button>
+  </div>
+
+</main>
+
+<script src="/js/carrito.js"></script>
+
+<script>
+function renderCarrito() {
+  let carrito = getCarrito();
+  let cont = document.getElementById("carrito-lista");
+
+  cont.innerHTML = "";
+
+  let total = 0;
+
+  carrito.forEach((item, index) => {
+    total += item.precio;
+
+    cont.innerHTML += `
+      <div class="carrito-item">
+        <p>${item.nombre}</p>
+        <p>C$${item.precio}</p>
+        <button onclick="eliminar(${index})">❌</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = "Total: C$" + total;
+}
+
+function eliminar(index) {
+  let carrito = getCarrito();
+  carrito.splice(index, 1);
+  saveCarrito(carrito);
+  renderCarrito();
+}
+
+function comprar() {
+  alert("Compra realizada 🎉");
+  localStorage.removeItem("carrito");
+  renderCarrito();
+}
+
+renderCarrito();
+</script>
+
+</body>
+</html>

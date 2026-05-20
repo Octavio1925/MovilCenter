@@ -3,37 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Producto</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
 
 <header class="header">
-<a href="../index.html" class="back">← Volver</a>
+  <a href="../index.html" class="back">← Volver</a>
+
   <h1>MovilCenter</h1>
 
   <nav>
-    <a href="/index.html">Inicio</a>
-    <a href="/html/carrito.html">Carrito</a>
+    <a href="../index.html">Inicio</a>
+    <a href="carrito.html">Carrito</a>
   </nav>
 </header>
 
 <main class="container">
 
-  <div class="producto" id="producto">
-    <!-- contenido dinámico -->
-  </div>
+  <div class="producto" id="producto"></div>
 
 </main>
 
-<script src="/js/carrito.js"></script>
+<script src="../js/carrito.js"></script>
 
 <script>
 const productos = {
   iphone13: {
     nombre: "iPhone 13",
     precio: 25000,
-    img: "/img/iphone13.jpg",
+    img: "../img/iphone13.jpg",
     desc: "El iPhone 13 combina potencia, diseño premium y excelente cámara. Ideal para fotografía, redes sociales y rendimiento diario.",
     specs: [
       "Pantalla Super Retina XDR de 6.1 pulgadas",
@@ -47,7 +46,7 @@ const productos = {
   samsungS22: {
     nombre: "Samsung Galaxy S22",
     precio: 20000,
-    img: "/img/samsungS22.jpg",
+    img: "../img/samsungS22.jpg",
     desc: "Un gama alta compacto con potencia brutal y cámara profesional.",
     specs: [
       "Pantalla Dynamic AMOLED 2X 120Hz",
@@ -61,7 +60,7 @@ const productos = {
   xiaomi12: {
     nombre: "Xiaomi 12",
     precio: 15000,
-    img: "/img/xiaomi12.jpg",
+    img: "../img/xiaomi12.jpg",
     desc: "Rendimiento potente a precio accesible.",
     specs: [
       "Snapdragon 8 Gen 1",
@@ -75,7 +74,7 @@ const productos = {
   iphone14: {
     nombre: "iPhone 14",
     precio: 28000,
-    img: "/img/iphone14.jpg",
+    img: "../img/iphone14.jpg",
     desc: "Mejoras en cámara y rendimiento con diseño refinado.",
     specs: [
       "Chip A15 mejorado",
@@ -89,7 +88,7 @@ const productos = {
   samsungA53: {
     nombre: "Samsung A53",
     precio: 12000,
-    img: "/img/samsungA53.jpg",
+    img: "../img/samsungA53.jpg",
     desc: "Gama media potente con excelente batería.",
     specs: [
       "Pantalla Super AMOLED 120Hz",
@@ -103,7 +102,7 @@ const productos = {
   redmiNote11: {
     nombre: "Redmi Note 11",
     precio: 9000,
-    img: "/img/redmiNote11.jpg",
+    img: "../img/redmiNote11.jpg",
     desc: "Económico pero muy funcional para el día a día.",
     specs: [
       "Pantalla AMOLED 90Hz",
@@ -115,7 +114,6 @@ const productos = {
   }
 };
 
-// leer URL
 function getQuery() {
   const params = new URLSearchParams(window.location.search);
   return params.get("producto");
